@@ -2,3 +2,6 @@
 .godot/
 *.exe
 *.tmp
+.DS_Store
+*.app/
+*.command

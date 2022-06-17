@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5tgm7n588umf"]
+[gd_scene load_steps=7 format=3 uid="uid://b5tgm7n588umf"]
 
 [ext_resource type="Script" path="res://IKTester.gd" id="1_nckhr"]
 [ext_resource type="PackedScene" uid="uid://b7kxrgykinpw3" path="res://atomic_robot.tscn" id="2_tsc3h"]
 [ext_resource type="Script" path="res://player_networking.gd" id="3_3blsj"]
+[ext_resource type="Script" path="res://tps_camera.gd" id="4_fsegr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kfbuv"]
 radius = 0.271986
@@ -27,10 +28,6 @@ script = ExtResource( "1_nckhr" )
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28243, 0)
 shape = SubResource( "CapsuleShape3D_kfbuv" )
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0741, 5.14061)
-current = true
-
 [node name="atomic-robot" parent="." instance=ExtResource( "2_tsc3h" )]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
@@ -39,3 +36,12 @@ script = ExtResource( "3_3blsj" )
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Networking"]
 congiruation = SubResource( "SceneReplicationConfig_yyjub" )
+
+[node name="CameraOrbit" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.719394, 0)
+script = ExtResource( "4_fsegr" )
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrbit"]
+transform = Transform3D(1, 0, 0, 0, 0.995056, 0.0993198, 0, -0.0993198, 0.995056, 0, 0.225334, 2.20116)
+current = true
+fov = 60.7

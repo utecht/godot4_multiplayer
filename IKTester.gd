@@ -16,7 +16,7 @@ func is_local_authority():
 
 func _ready():
 	$Networking/MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
-	$Camera3D.current = is_local_authority()
+	$CameraOrbit/Camera3D.current = is_local_authority()
 
 func _physics_process(delta):
 	if !is_local_authority():
