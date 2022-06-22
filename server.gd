@@ -15,17 +15,29 @@ func start_network(server: bool) -> void:
 		multiplayer.peer_connected.connect(self.create_player)
 		multiplayer.peer_disconnected.connect(self.destroy_player)
 		
-		peer.create_server(8080)
-		print('server listening on 8080')
+		var err = peer.create_server(9876)
+		if err:
+			print(err)
+		else:
+			print('server listening on 9876')
 	else:
-		peer.create_client('localhost', 8080)
+		print('attempting to connect...')
+		var err = peer.create_client('localhost', 9876)
+		if err:
+			print(err)
+		else:
+			print('connected')
 	
 	multiplayer.set_multiplayer_peer(peer)
+#	if server:
+#		create_player(multiplayer.get_unique_id())
 	
 func create_player(id: int) -> void:
+	print('creating player')
 	var p = PlayerScene.instantiate()
 	p.name = str(id)
 	$Players.add_child(p)
 	
 func destroy_player(id: int) -> void:
+	print('destroying player')
 	$Players.get_node(str(id)).queue_free()

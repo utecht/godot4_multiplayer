@@ -15,6 +15,7 @@ func is_local_authority():
 	return $Networking/MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id()
 
 func _ready():
+	print('Im ready')
 	$Networking/MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 	$CameraOrbit/Camera3D.current = is_local_authority()
 

@@ -12,9 +12,5 @@ config_version=5
 
 config/name="rpg_test"
 run/main_scene="res://Server.tscn"
-config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Mobile")
-
-[rendering]
-
-vulkan/rendering/back_end=1
+config/icon="res://icon.png"
